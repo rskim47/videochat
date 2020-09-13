@@ -1,8 +1,9 @@
 const socket = io('/'); // connecting to the root path 
 const videoGrid = document.getElementById('video-grid'); // video location 
 const myPeer = new Peer(undefined, {
-  host: '/',
-  port: '3001'
+  host: 'vid.popmobile.app',
+  port: '3001',
+  path: '/peerjs'
 }) // takes all web rtc info -> converts to id,  makes it easier to connect with other
 
 // peerjs --port 3001
