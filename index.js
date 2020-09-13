@@ -1,10 +1,17 @@
 const express = require("express");
 const app = express();
-const server = require("http").Server(app);
-const io = require('socket.io')(server);
+
 const { v4: uuidV4 } = require('uuid');
+const fs = require('fs');
 
 const port = 3000;
+const httpsOptions = {
+  cert: fs.readFileSync("./cert/archive/popmobile.app/fullchain4.pem"),
+  key: fs.readFileSync("./cert/archive/popmobile.app/privkey4.pem"),
+}
+
+const server = require("https").Server(httpsOptions, app);
+const io = require('socket.io')(server);
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
